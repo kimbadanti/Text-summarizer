@@ -33,14 +33,14 @@ list_of_files = [
 
 for filepath in list_of_files:
     filepath = Path(filepath)
-    filedir, filename = os.path.split(filepath)
+    filedir, filename = os.path.split(filepath)#splits the file directory name and file name and store it into filedir and filename.
 
-    if filedir != "":
-        os.makedirs(filedir, exist_ok=True)
-        logging.info(f"Creating directory:{filedir} for the file {filename}")
+    if filedir != "": #Checks if there already a file exists on that mentioned directory or not
+        os.makedirs(filedir, exist_ok=True)#if not the create a new file
+        logging.info(f"Creating directory:{filedir} for the file {filename}")#log that information of creating a new file
 
     
-    if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):
+    if (not os.path.exists(filepath)) or (os.path.getsize(filepath) == 0):#if the file is empty then create a empty file
         with open(filepath,'w') as f:
             pass
             logging.info(f"Creating empty file: {filepath}")
